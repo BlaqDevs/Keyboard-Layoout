@@ -173,7 +173,7 @@
           v-for="btn in row6"
           :key="btn.name"
         >
-          {{ btn.symbol }}
+          <i :class="btn.icon"></i>
           <p>{{ btn.name }}</p>
         </div>
         <div class="arrow text-center inline-block row6">
@@ -650,7 +650,7 @@ export default {
           class: "last row6",
         },
         {
-          name: '<i class="fa-brands fa-windows"></i>',
+          icon: 'fab fa-windows',
           symbol: "",
           class: "last row6",
         },

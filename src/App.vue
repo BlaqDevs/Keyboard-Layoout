@@ -3,6 +3,8 @@
     <h2 class="text-3xl my-5">
       Focus on the text area for the keyboard to show
     </h2>
+
+
     <textarea
     @focus="showKeyboard"
       class="my-7 border-blue-4"
