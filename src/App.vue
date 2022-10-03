@@ -1,19 +1,42 @@
 <template>
-  <div id="app">
-    
-    <Keyboard msg="Welcome to Your Vue.js App"/>
+  <div id="app" class="bg-slate-100 h-screen my-auto">
+    <h2 class="text-3xl my-5">
+      Focus on the text area for the keyboard to show
+    </h2>
+    <textarea
+    @focus="showKeyboard"
+      class="my-7 border-blue-4"
+      name="textarea"
+      id=""
+      cols="100"
+      rows="5"
+    ></textarea>
+
+    <div v-show="focus">
+      <Keyboard />
+    </div>
   </div>
 </template>
 
 <script>
-import Keyboard from './components/Keyboard.vue'
+import Keyboard from "./components/Keyboard.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    Keyboard
+    Keyboard,
+  },
+  data() {
+    return {
+      focus:false
+    };
+  },
+  methods:{
+    showKeyboard(){
+      this.focus = true
+    }
   }
-}
+};
 </script>
 
 <style>
@@ -22,7 +45,6 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+
 }
 </style>
