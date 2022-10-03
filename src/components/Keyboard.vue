@@ -1,7 +1,6 @@
 <template>
   <!-- <div class="wrapper font-sans text-sm text-center"> -->
     <div class="container font-sans w-9/12 text-center text-sm h-96 mx-auto bg-stone-100">
-      <!-- <div class="main  h-80 w-9/12"> -->
         <div
           :class="btn.class"
           class="
@@ -651,7 +650,7 @@ export default {
           class: "last row6",
         },
         {
-          name: "icon",
+          name: '<i class="fa-brands fa-windows"></i>',
           symbol: "",
           class: "last row6",
         },
