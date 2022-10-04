@@ -5,17 +5,22 @@
     </h2>
 
 
+
+
     <textarea
     @focus="showKeyboard"
       class="my-7 border-blue-4"
       name="textarea"
+      v-model="textArea"
       id=""
       cols="100"
       rows="5"
     ></textarea>
 
+    {{textArea}}
+
     <div v-show="focus">
-      <Keyboard />
+      <Keyboard @key="textArea += $event"/>
     </div>
   </div>
 </template>
@@ -30,7 +35,8 @@ export default {
   },
   data() {
     return {
-      focus:false
+      focus:false,
+      textArea:''
     };
   },
   methods:{
