@@ -12,7 +12,6 @@
       bg-stone-100
     "
   >
-    {{ pressedKey }} '' {{ isShift }} ...
     <div
       :class="btn.class"
       :data-value="btn.value"

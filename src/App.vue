@@ -17,8 +17,6 @@
       rows="5"
     ></textarea>
 
-    {{textArea}}
-
     <div v-show="focus">
       <Keyboard @key="textArea += $event"/>
     </div>
