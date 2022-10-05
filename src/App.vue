@@ -3,10 +3,6 @@
     <h2 class="text-3xl my-5">
       Focus on the text area for the keyboard to show
     </h2>
-
-
-
-
     <textarea
     @focus="showKeyboard"
       class="my-7 border-blue-4"
@@ -17,8 +13,11 @@
       rows="5"
     ></textarea>
 
+    <div v-show="focus" class="">
+      <Keyboard :focus = focus @key="textArea += $event"/>
+    </div>
     <div v-show="focus">
-      <Keyboard @key="textArea += $event"/>
+      <button class="text-white h-10 shadow-md rounded-full shadow-black w-10 border border-solid border-slate-300 bg-black" @click="focus = !focus"><i class="fa fa-close"></i></button>
     </div>
   </div>
 </template>

@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/no-mutating-props -->
 <template>
   <div
     ref="container"
@@ -12,6 +13,7 @@
       bg-stone-100
     "
   >
+ 
     <div
       :class="btn.class"
       :data-value="btn.value"
@@ -322,6 +324,7 @@
         </div>
       </div>
     </div>
+    
   </div>
 </template>
 
@@ -329,14 +332,13 @@
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: "Keyboard",
-  props: {
-    msg: String,
-  },
+  props: ['focus'],
   data() {
     return {
       isCapsLock: false,
+      isBackSpace: false,
       isShift: false,
-      pressedKey:null,
+      pressedKey:[],
       row1: [
         {
           name: "ESC",
@@ -874,14 +876,22 @@ export default {
       if (code === 20) {
         this.isCapsLock = !this.isCapsLock;
       }
+      if (code === 8) {
+      console.log(JSON.stringify('arr' + ' ' + this.pressedKey, null,2))  
 
-      this.pressedKey = this.isShift ?  document.querySelector(selector).getAttribute('data-sym') || document.querySelector(selector).getAttribute('data-value').toUpperCase() : document.querySelector(selector).getAttribute('data-value')  
+      }
 
-              // this.$emit('key',this.pressedKey)
+
+      this.pressedKey =  this.isCapsLock? document.querySelector(selector).getAttribute('data-value').toUpperCase() : this.isShift ? document.querySelector(selector).getAttribute('data-sym') || document.querySelector(selector).getAttribute('data-value').toUpperCase() : document.querySelector(selector).getAttribute('data-value');  
+
 
 
       return {selector:document.querySelector(selector),key:code};
     },
+backspace(data){
+data.pop()
+},
+
     pressKey(char) {
       console.log("pressed", char);
       var selector =
@@ -894,9 +904,12 @@ export default {
       selector.classList.add("bg-black", "relative", "top-0.5", "text-gray-400");
       if(char == '20'){
                 this.isCapsLock = !this.isCapsLock;
-
       } 
-      this.pressedKey = this.isShift ?  selector.getAttribute('data-sym') || selector.getAttribute('data-value').toUpperCase() : selector.getAttribute('data-value')  
+    //   if (char === '8') {
+    //   console.log(JSON.stringify('arr' + ' ' + this.pressedKey, null,2))  
+    // }
+      // this.backspace(this.pressedKey)
+      this.pressedKey = this.isCapsLock ?  selector.getAttribute('data-value').toUpperCase() : this.isShift ? selector.getAttribute('data-sym') || selector.getAttribute('data-value').toUpperCase() : selector.getAttribute('data-value')  
 
       // this.pressedKey = selector.getAttribute('data-value')
               this.$emit('key',this.pressedKey)
@@ -922,17 +935,11 @@ export default {
           .classList.remove("bg-black", "relative", "top-0.5", "text-gray-400");
       }
     },
-    pressedKey:{
-      deep:true,
-      handler(key){
-        console.log(key)
-       // this.$emit('key',key)
-      
-      }
-    }
+  
   },
   mounted() {
-    document.body.addEventListener("keydown", (e) => {
+
+ document.body.addEventListener("keydown", (e) => {
       var key = this.keyBind(e);
       console.log(key.selector);
       if (!key.selector) {
@@ -959,7 +966,9 @@ export default {
       key.selector.classList.remove("bg-black", "relative", "top-0.5", "text-gray-400");
     });
   },
-  computed: {},
+  computed: {
+   
+  },
   created() {
     window.addEventListener("resize", this.resizeHandler);
   },
