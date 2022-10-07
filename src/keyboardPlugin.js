@@ -1,10 +1,9 @@
 import keyboard from './components/Keyboard.vue'
 
+
 export default {
     install(Vue) {
-        Vue.prototype.$name = 'Blaq'
-        Vue.prototype.$keyCodeSelector = 'Blaq'
-        Vue.prototype.$valueUpperCase = location
+        Vue.component('key-board', keyboard)
 
         Vue.mixin({
 
@@ -530,6 +529,10 @@ export default {
                 };
             },
             methods: {
+               
+                showKeyboard() {
+                    this.focus = true
+                },
                 resizeHandler() {
                     let size = this.$refs.container.clientWidth / 90;
                     this.$refs.container.style.fontSize = size + "px";
@@ -639,14 +642,12 @@ export default {
                 },
 
             },
-            mounted() {
 
+            mounted() {
                 document.body.addEventListener("keydown", this.keyDown);
                 document.body.addEventListener("keyup", this.keyUp);
             },
-            computed: {
-
-            },
+           
             created() {
                 window.addEventListener("resize", this.resizeHandler);
             },
@@ -655,6 +656,5 @@ export default {
                 window.removeEventListener("resize", this.resizeHandler);
             },
         })
-        Vue.component('key-board', keyboard)
     }
 }

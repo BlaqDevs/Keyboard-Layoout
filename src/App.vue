@@ -13,8 +13,8 @@
       rows="5"
     ></textarea>
 
-    <div class="mx-auto flex justify-center" v-show="focus" >
-      <key-board @key="textArea += $event">
+    <div class="" v-show="focus" >
+      <key-board  @key="handleInput">
       </key-board>
     </div>
     <div v-show="focus">
@@ -35,9 +35,9 @@ export default {
     };
   },
   methods:{
-    showKeyboard(){
-      this.focus = true
-    }
+     handleInput(event){
+                    this.textArea += event
+                },
   }
 };
 </script>

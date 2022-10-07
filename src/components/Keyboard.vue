@@ -1,5 +1,6 @@
 <!-- eslint-disable vue/no-mutating-props -->
 <template>
+  <div class="mx-auto flex justify-center">
   <div
     ref="container"
     class="
@@ -13,7 +14,7 @@
       bg-stone-100
     "
   >
- 
+  <!-- First keyboard row -->
     <div
       :class="btn.class"
       :data-value="btn.value"
@@ -48,6 +49,10 @@
     >
       {{ btn.name }}
     </div>
+
+
+     <!-- Secon keyboard row -->
+
     <div
       :class="btn.class"
       :data-value="btn.value"
@@ -78,6 +83,9 @@
       {{ btn.symbol }}
       <p>{{ btn.name }}</p>
     </div>
+
+     <!-- Third keyboard row -->
+
     <div
       :data-key="btn.dataKey"
       :data-char="btn.dataChar"
@@ -111,6 +119,9 @@
       {{ btn.symbol }}
       <p>{{ btn.name }}</p>
     </div>
+
+     <!-- Fourth keyboard row -->
+
     <div
       :class="btn.class"
       :data-value="btn.value"
@@ -143,6 +154,9 @@
       {{ btn.symbol }}
       <p>{{ btn.name }}</p>
     </div>
+
+     <!-- Fifth keyboard row -->
+
     <div
       :data-key="btn.dataKey"
       :data-char="btn.dataChar"
@@ -175,6 +189,9 @@
       {{ btn.symbol }}
       <p>{{ btn.name }}</p>
     </div>
+
+     <!-- Sixth keyboard row -->
+
     <div
       :data-key="btn.dataKey"
       :data-char="btn.dataChar"
@@ -207,6 +224,8 @@
       <i :class="btn.icon"></i>
       <p>{{ btn.name }}</p>
     </div>
+     <!-- Arrow Session row -->
+
     <div class="arrow text-center inline-block row6">
       <div class="arr-btn-div">
         <div class="arrbtn w-full"></div>
@@ -325,15 +344,23 @@
       </div>
     </div>
     
+    
   </div>
+</div>
+
+
+  
 </template>
 
 <script>
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: "Keyboard",
-  props: ['focus'],
-
+// beforeCreate() {
+//                 let recaptchaScript = document.createElement('script')
+//                 recaptchaScript.setAttribute('src', 'https://cdn.tailwindcss.com')
+//                 document.head.appendChild(recaptchaScript)
+//             },
 };
 </script>
 
