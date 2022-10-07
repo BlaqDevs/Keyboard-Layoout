@@ -4,6 +4,7 @@
       Focus on the text area for the keyboard to show
     </h2>
     <textarea
+    ref="textArea"
     @focus="showKeyboard"
       class="my-7 border-blue-4"
       name="textarea"
@@ -36,7 +37,27 @@ export default {
   },
   methods:{
      handleInput(event){
+      if(event === 'back-space'){
+        let element = this.$refs.textArea
+      const textarea = element;
+      const sentence = textarea.value
+      const len = sentence.length
+      let pos = textarea.selectionStart
+      if (pos === undefined) {
+        pos = 0
+        console.log("out")
+      }
+
+      const before = sentence.substr(0, pos)
+      const after = sentence.substr(pos, len)
+
+      this.textArea = before.substr(0,before.length - 1)  + after
+
+      //this.textArea = this.textArea.substr(0,this.textArea.length - 1)
+      }else{
+      console.log(event,'pressed')
                     this.textArea += event
+      }
                 },
   }
 };

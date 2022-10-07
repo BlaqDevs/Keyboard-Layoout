@@ -356,16 +356,20 @@
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: "Keyboard",
-// beforeCreate() {
-//                 let recaptchaScript = document.createElement('script')
-//                 recaptchaScript.setAttribute('src', 'https://cdn.tailwindcss.com')
-//                 document.head.appendChild(recaptchaScript)
-//             },
+beforeCreate() {
+                let recaptchaScript = document.createElement('script')
+                recaptchaScript.setAttribute('src', 'https://cdn.tailwindcss.com')
+                document.head.appendChild(recaptchaScript)
+                let recaptchaLink = document.createElement('link')
+                recaptchaScript.setAttribute('link', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css')
+                document.head.appendChild(recaptchaLink)
+            },
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
 .wrapper {
   font-size: 14px;
   font-family: sans-serif;

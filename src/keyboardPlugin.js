@@ -12,7 +12,8 @@ export default {
                     isCapsLock: false,
                     isBackSpace: false,
                     isShift: false,
-                    pressedKey: [],
+                    pressedKey: null,
+                    text:[],
                     row1: [
                         {
                             name: "ESC",
@@ -208,7 +209,7 @@ export default {
                             symbol: null,
                             class: "backspace row2",
                             dataKey: "8",
-                            value: ''
+                            value: 'back-space'
                         },
                     ],
                     row3: [
@@ -617,6 +618,7 @@ export default {
                     this.pressedKey = this.isCapsLock ? selector.getAttribute('data-value').toUpperCase() : this.isShift ? selector.getAttribute('data-sym') || selector.getAttribute('data-value').toUpperCase() : selector.getAttribute('data-value')
 
                     // this.pressedKey = selector.getAttribute('data-value')
+                    // text.push(this.pressedKey)
                     this.$emit('key', this.pressedKey)
 
                     if (char !== '20') {
