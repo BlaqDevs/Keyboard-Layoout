@@ -13,8 +13,9 @@
       rows="5"
     ></textarea>
 
-    <div v-show="focus" class="">
-      <Keyboard :focus = focus @key="textArea += $event"/>
+    <div class="mx-auto flex justify-center" v-show="focus" >
+      <key-board @key="textArea += $event">
+      </key-board>
     </div>
     <div v-show="focus">
       <button class="text-white h-10 shadow-md rounded-full shadow-black w-10 border border-solid border-slate-300 bg-black" @click="focus = !focus"><i class="fa fa-close"></i></button>
@@ -23,13 +24,10 @@
 </template>
 
 <script>
-import Keyboard from "./components/Keyboard.vue";
 
 export default {
   name: "App",
-  components: {
-    Keyboard,
-  },
+ 
   data() {
     return {
       focus:false,
