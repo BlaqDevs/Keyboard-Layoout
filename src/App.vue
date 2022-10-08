@@ -15,12 +15,10 @@
     ></textarea>
 
     <div class="" v-show="focus" >
-      <key-board  @key="handleInput">
+      <key-board @hideKeyboard='focus = $event' :focus= focus @key="$handleInput">
       </key-board>
     </div>
-    <div v-show="focus">
-      <button class="text-white h-10 shadow-md rounded-full shadow-black w-10 border border-solid border-slate-300 bg-black" @click="focus = !focus"><i class="fa fa-close"></i></button>
-    </div>
+    
   </div>
 </template>
 
@@ -36,29 +34,27 @@ export default {
     };
   },
   methods:{
-     handleInput(event){
-      if(event === 'back-space'){
-        let element = this.$refs.textArea
-      const textarea = element;
-      const sentence = textarea.value
-      const len = sentence.length
-      let pos = textarea.selectionStart
-      if (pos === undefined) {
-        pos = 0
-        console.log("out")
-      }
+    //  handleInput(event){
+    //   if(event === 'back-space'){
+    //     let element = this.$refs.textArea
+    //   const textarea = element;
+    //   const sentence = textarea.value
+    //   const len = sentence.length
+    //   let pos = textarea.selectionStart
+    //   if (pos === undefined) {
+    //     pos = 0
+    //     console.log("out")
+    //   }
 
-      const before = sentence.substr(0, pos)
-      const after = sentence.substr(pos, len)
+    //   const before = sentence.substr(0, pos)
+    //   const after = sentence.substr(pos, len)
 
-      this.textArea = before.substr(0,before.length - 1)  + after
-
-      //this.textArea = this.textArea.substr(0,this.textArea.length - 1)
-      }else{
-      console.log(event,'pressed')
-                    this.textArea += event
-      }
-                },
+    //   this.textArea = before.substr(0,before.length - 1)  + after
+    //   }else{
+    //   console.log(event,'pressed')
+    //                 this.textArea += event
+    //   }
+    //             },
   }
 };
 </script>

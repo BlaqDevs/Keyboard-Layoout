@@ -1,4 +1,5 @@
 <!-- eslint-disable vue/no-mutating-props -->
+<!-- eslint-disable vue/no-mutating-props -->
 <template>
   <div class="mx-auto flex justify-center">
   <div
@@ -343,7 +344,9 @@
         </div>
       </div>
     </div>
-    
+    <div class="mx-auto">
+      <button class="text-white h-10 shadow-md rounded-full shadow-black w-10 border border-solid border-slate-300 bg-black" @click="hideKeyboard"><i class="fa fa-close"></i></button>
+    </div>
     
   </div>
 </div>
@@ -356,6 +359,7 @@
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: "Keyboard",
+  props:['focus'],
 beforeCreate() {
                 let recaptchaScript = document.createElement('script')
                 recaptchaScript.setAttribute('src', 'https://cdn.tailwindcss.com')
@@ -364,6 +368,13 @@ beforeCreate() {
                 recaptchaScript.setAttribute('link', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css')
                 document.head.appendChild(recaptchaLink)
             },
+            methods:{
+            hideKeyboard(){
+                    // eslint-disable-next-line vue/no-mutating-props
+                    this.focus = false
+                    this.$emit('hideKeyboard', this.focus)
+                },
+            }
 };
 </script>
 

@@ -530,7 +530,28 @@ export default {
                 };
             },
             methods: {
-               
+                
+                $handleInput(event) {
+                    if (event === 'back-space') {
+                        let element = this.$refs.textArea
+                        const textarea = element;
+                        const sentence = textarea.value
+                        const len = sentence.length
+                        let pos = textarea.selectionStart
+                        if (pos === undefined) {
+                            pos = 0
+                            console.log("out")
+                        }
+
+                        const before = sentence.substr(0, pos)
+                        const after = sentence.substr(pos, len)
+
+                        this.textArea = before.substr(0, before.length - 1) + after
+                    } else {
+                        console.log(event, 'pressed')
+                        this.textArea += event
+                    }
+                },
                 showKeyboard() {
                     this.focus = true
                 },
